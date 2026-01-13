@@ -15,32 +15,29 @@ int main ()
   
   scanf("%d", &num);
   
-  if(num==0)
+  switch (num)
   {
-    printf("Saindo...\n");
-  }
-  else if(num==1)
-  {
-    printf("Qual livro gostaria de adicionar?\n");
-  }
-  else if(num==2)
-  {
-    printf("Qual livro gostaria de editar?\n");
-  }
-  else if(num==3)
-  {
-    printf("Qual livro gostaria de remover?\n?");
-  }
-  else if(num==4)
-  {
-    printf("Aqui estão os livros: \n");
-  }
-  else if(num==5)
-  {
-    printf("Pesquise aqui: \n");
-  }else if (num>5)
-  {
-    printf("Número Inválido\n");
+    case 0:
+      printf("Saindo...\n");
+      break;
+    case 1:
+      printf("Qual livro gostaria de adicionar?\n");
+      break;
+    case 2:
+      printf("Qual livro gostaria de editar?\n");
+      break;
+    case 3:
+      printf("Qual livro gostaria de remover?\n");
+      break;
+    case 4:
+      printf("Aqui estão os livros: \n");
+      break;
+    case 5:
+      printf("Pesquise aqui: \n");
+      break;
+    default:
+      printf("Número Inválido\n");
+      break;
   }
 
   return 0;
