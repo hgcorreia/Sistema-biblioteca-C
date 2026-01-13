@@ -4,6 +4,7 @@ int main ()
 {
   int num;
   
+  //chatgpt não presta
   printf("#************** SISTEMA DE GESTÃO DE BIBLIOTECA **************#\n\n");
   printf("1 - Adicionar Livro\n\n");  
   printf("2 - Editar Livro\n\n");  
