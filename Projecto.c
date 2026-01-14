@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <locale.h>
 
 int main ()
 {
+
   int num;
   int seila = 1;
-  
+  char livro;
   //chatgpt não presta
   printf("#************** SISTEMA DE GESTÃO DE BIBLIOTECA **************#\n\n");
   printf("1 - Adicionar Livro\n\n");  
@@ -27,6 +29,7 @@ int main ()
         break;
       case 1:
         printf("Qual livro gostaria de adicionar?\n");
+        scanf("%c", &livro);
         break;
       case 2:
         printf("Qual livro gostaria de editar?\n");
