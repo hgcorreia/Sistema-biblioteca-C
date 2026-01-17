@@ -1,35 +1,44 @@
 #include <stdio.h>
 #include <locale.h>
 
+#define limite_LIVROS 100
+
+  struct Livros
+  {
+    char titulo[50];
+    char autor[50];
+    int ano;
+  };
+  
+  typedef struct Livros Livros;
+
 int main ()
 {
-
+  setlocale(LC_ALL, "Portuguese");
   int num;
-  int seila = 1;
-  char livro;
-  //chatgpt não presta
-  printf("#************** SISTEMA DE GESTÃO DE BIBLIOTECA **************#\n\n");
-  printf("1 - Adicionar Livro\n\n");  
-  printf("2 - Editar Livro\n\n");  
-  printf("3 - Remover Livro\n\n");  
-  printf("4 - Listar Livros\n\n");  
-  printf("5 - Pesquisar Livro\n\n");  
-  printf("0 - Sair\n\n");
-  printf("#*************************************************************#\n\n");
+  int sair = 1;
   
   do
   {
+    printf("\n#************** SISTEMA DE GESTÃO DE BIBLIOTECA **************#\n\n");
+    printf("1 - Adicionar Livro\n\n");  
+    printf("2 - Editar Livro\n\n");  
+    printf("3 - Remover Livro\n\n");  
+    printf("4 - Listar Livros\n\n");  
+    printf("5 - Pesquisar Livro\n\n");  
+    printf("0 - Sair\n\n");
+    printf("#*************************************************************#\n\n");
+    
     scanf("%d", &num);
     
     switch (num)
     {
       case 0:
         printf("Saindo...\n");
-        seila = 0;
+        sair = 0;
         break;
       case 1:
         printf("Qual livro gostaria de adicionar?\n");
-        scanf("%c", &livro);
         break;
       case 2:
         printf("Qual livro gostaria de editar?\n");
@@ -47,7 +56,7 @@ int main ()
         printf("Número Inválido\n");
         break;
     }
-  }while(seila != 0);
+  }while(sair != 0);
     
 
   return 0;
