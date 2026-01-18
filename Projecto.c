@@ -66,7 +66,39 @@ int main ()
         break;
         
       case 2: //Editar Livros
-        printf("Qual livro gostaria de editar?\n");
+        
+          if (total_livros == 0) 
+          {
+              printf("A biblioteca está vazia!\n");
+          } else 
+          {
+              int indice;
+              printf("Digite o número do livro que deseja editar (1 a %d): ", total_livros);
+              scanf("%d", &indice);
+
+              // Ajustamos para o índice do array (ex: utilizador escolhe 1, acessamos a posição 0)
+              int posicao = indice - 1;
+
+              if (posicao >= 0 && posicao < total_livros) 
+              {
+                  printf("A editar: %s", biblioteca[posicao].titulo);
+                  getchar();
+
+                  printf("Novo Título: ");
+                  fgets(biblioteca[posicao].titulo, 50, stdin);
+
+                  printf("Novo Autor: ");
+                  fgets(biblioteca[posicao].autor, 50, stdin);
+
+                  printf("Novo Ano: ");
+                  scanf("%d", &biblioteca[posicao].ano);
+
+                  printf("Livro atualizado com sucesso!\n");
+              } else 
+              {
+                  printf("Número inválido!\n");
+              }
+            }
         break;
         
       case 3://Remover Livros
