@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <locale.h>
+#include <string.h>
 
 #define limite_LIVROS 100
 
@@ -99,10 +100,34 @@ int main ()
                   printf("Número inválido!\n");
               }
             }
-        break;
+          break;
         
       case 3://Remover Livros
-        printf("Qual livro gostaria de remover?\n");
+        
+        if (total_livros == 0) 
+        {
+            printf("Nada para remover.\n");
+        } else 
+        {
+            int indice;
+            printf("Digite o número do livro para remover (1 a %d): ", total_livros);
+            scanf("%d", &indice);
+
+            int posicao = indice - 1;
+
+            if (posicao >= 0 && posicao < total_livros) {
+                // "Puxar" todos os livros à frente uma posição para trás
+                for (int i = posicao; i < total_livros - 1; i++) 
+                {
+                    biblioteca[i] = biblioteca[i + 1];
+                }
+                total_livros--; // Diminuímos o total, pois agora há um livro a menos
+                printf("Livro removido com sucesso!\n");
+            } else 
+            {
+                printf("Número inválido!\n");
+            }
+        }
         break;
         
       case 4://Listar Livros
@@ -120,7 +145,42 @@ int main ()
         break;
         
       case 5://Pesquisar Livros
-        printf("Pesquise aqui: \n");
+        if (total_livros == 0) 
+        {
+            printf("A biblioteca está vazia, nada para pesquisar.\n");
+        } else 
+        {
+            char termo[50];
+            int encontrado = 0;
+
+            printf("Digite o título exato do livro que procura: ");
+            getchar(); // Limpa o buffer do scanf anterior
+            fgets(termo, 50, stdin);
+            
+            // Remove o '\n' que o fgets coloca no final para a comparação funcionar
+            for(int i = 0; termo[i] != '\0'; i++) 
+            {
+                if(termo[i] == '\n') termo[i] = '\0';
+            }
+
+            printf("\nResultados da pesquisa:\n");
+            for (int i = 0; i < total_livros; i++) 
+            {
+                // strcmp devolve 0 se as strings forem iguais
+                if (strcmp(biblioteca[i].titulo, termo) == 0) 
+                {
+                    printf("Encontrado na posição %d:\n", i + 1);
+                    printf("Título: %s - Autor: %s - Ano: (%d)\n", 
+                            biblioteca[i].titulo, biblioteca[i].autor, biblioteca[i].ano);
+                    encontrado = 1;
+                }
+            }
+            
+            if (encontrado == 0) 
+            {
+                printf("Nenhum livro com esse título foi encontrado.\n");
+            }
+        }
         break;
         
       default://Números Inválidos
